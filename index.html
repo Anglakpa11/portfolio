@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ang Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: white;
+      height: 100vh;
+    }
+
+    .sidebar {
+      position: fixed;
+      height: 100vh;
+      width: 280px;
+      background-color: #1f1f1f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+
+
+    }
+
+    .profile img {
+      width: 170px;
+      border-radius: 50%;
+      border: 4px solid #444;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      width: 100%;
+    }
+
+    nav ul li {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      color: #ccc;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li:hover,
+    nav ul li.active {
+
+      color: rgb(254, 9, 80);
+    }
+
+    nav ul li img {
+      width: 18px;
+      margin-right: 12px;
+    }
+
+    .socials {
+      margin-top: auto;
+      text-align: center;
+    }
+
+    .socials p {
+      text-align: left;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 10px;
+      margin-bottom: 30px;
+    }
+
+    .socials hr {
+      margin-bottom: 20%;
+      width: 100%;
+    }
+
+    .media {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .media li {
+      list-style: none;
+    }
+
+    .media img {
+      width: 20px;
+
+      cursor: pointer;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 40px;
+      padding-top: 20%;
+
+      padding-left: 25%;
+      background-color: rgb(40, 40, 40);
+
+    }
+
+    .main-content h4 {
+      display: flex;
+      font-size: 25px;
+      padding-bottom: 20px;
+      color: #ccc;
+      letter-spacing: 1px;
+    }
+
+    .main-content h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .main-content h2 {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .main-content span {
+      color: rgb(254, 9, 80);
+    }
+
+    .main-content p {
+      font-size: 18px;
+      color: #aaa;
+      margin-top: 20px;
+      line-height: 1.6;
+      max-width: 500px;
+    }
+
+    .container {
+      display: flex;
+      gap: 2rem;
+      padding: 2rem;
+      flex-wrap: wrap;
+      background-color: rgb(0, 0, 0);
+    }
+
+    .buttom {
+      background-color: rgb(255, 2, 79);
+      color: white;
+      width: 15%;
+      height: 10%;
+      border-radius: 30px;
+      margin-top: 40px;
+      margin-bottom: 30%;
+    }
+
+    .pricebuttoms {
+      background-color: rgb(255, 2, 79);
+      color: white;
+      width: 160px;
+      height: 60px;
+      border-radius: 70px;
+      margin-top: 40px;
+      
+    }
+
+    .card {
+      border: 2px solid black;
+      border-radius: 20px;
+      box-shadow: #ffffff;
+      background-color: #222;
+      padding: 2rem;
+      width: 590px;
+      border: 2px solid transparent;
+      border-bottom: 3px solid rgb(254, 9, 80);
+      border-right: 3px solid rgb(254, 9, 80);
+      transition: 0.3s ease;
+
+
+    }
+
+    .card :hover {
+      box-shadow: rgb(254, 9, 80);
+      ;
+    }
+
+
+    .Para {
+      text-align: center;
+      padding: 60px 0px;
+    }
+
+    .Para .label {
+      color: #ff2d55;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 10px;
+
+    }
+
+    .Para h4 {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 10px;
+      padding-left: 25%;
+    }
+
+    .Para p {
+      color: #bbb;
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      line-height: 1.6;
+    }
+
+
+
+
+    .container2 {
+      display: flex;
+      gap: 2rem;
+      padding: 2rem;
+      flex-wrap: wrap;
+
+      background-color: rgb(0, 0, 0);
+    }
+
+    .cardimage:hover img {
+      transform: scale(1.1);
+
+
+    }
+
+
+    .cardimage img {
+      border: 2px solid black;
+      border-radius: 20px;
+      box-shadow: #ffffff;
+      background-color: #222;
+      padding: 2rem;
+      width: 590px;
+      border: 2px solid transparent;
+      border-bottom: 3px solid rgb(254, 9, 80);
+      border-right: 3px solid rgb(254, 9, 80);
+      transition: 0.3s ease;
+
+    }
+
+    .bottom-text {
+      width: 100%;
+      flex-direction: column;
+
+      display: flex;
+      text-align: left;
+
+      margin-top: 10px;
+
+      color: white;
+
+    }
+
+    .bottom-text p {
+      display: flex;
+      text-align: left;
+      margin-left: 0px;
+      margin-top: 0px;
+
+
+    }
+
+    .edu {
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      margin-top: 10px;
+      color: white;
+    }
+
+    .edu h4 {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 10px;
+      padding-left: 35%;
+    }
+
+    
+
+
+    .experience {
+      margin-top: 10px;
+      display: flex;
+
+
+
+    }
+
+    .left-side {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      padding-left: 0px;
+      margin-top: 25px;
+      width:600px;
+    }
+
+    .left-side p{
+      color: #bbb;
+      max-width: 600px;
+      line-height: 1.6;
+
+    }
+   
+    .right-side img{
+      width: 100%;
+      border-radius: 20px;
+      padding-left: 200px;
+      margin-top: 25px;
+    }
+
+
+    .MyPrice {
+      margin-top:60px;
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+  
+      color: white;
+    }
+
+    .MyPrice h4 {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 10px;
+      padding-left:32%;
+    }
+
+
+    
+     .container3 {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 20px;
+    }
+     
+
+
+    .pricecards {
+      border: 2px solid black;
+      border-radius: 20px;
+      box-shadow: #ffffff;
+      background-color: #222;
+      padding: 2rem;
+      width: 400px;
+      border: 2px solid transparent;
+      border-bottom: 3px solid rgb(254, 9, 80);
+      border-right: 3px solid rgb(254, 9, 80);
+      text-align: left;
+
+    }
+
+    .midpricecards{
+      border: 2px solid black;
+      border-radius: 20px;
+      box-shadow: #ffffff;
+      background-color: #222;
+      padding: 2rem;
+      width: 400px;
+      height: 550px;
+      border: 2px solid transparent;
+      border-bottom: 3px solid rgb(254, 9, 80);
+      border-right: 3px solid rgb(254, 9, 80);
+      text-align: left;
+
+    }
+
+    .pricecards h4{
+      color:white;
+      padding-left: 0%;
+      
+    }
+
+    .midpricecards h4{
+      color:white;
+      padding-left: 0%;}
+
+    .pricecards p{
+      color:white;
+      padding-left: 0%;
+      
+
+    }
+
+    .blogs{
+      margin-top: 50px;
+    }
+
+
+    .container5{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    text-align: left;
+    
+    
+
+      background-color: rgb(18, 18, 18);
+    }
+
+    .cardimages:hover  {
+      transform: scale(1.1);
+
+
+    }
+
+
+    .cardimages h3{
+      color: white;
+      width: 300px;
+      padding-left: 20px;
+
+    }
+
+.cardimages{
+  border: 3px solid rgb(54,55,56);
+  border-radius: 30px;
+  padding-bottom: 20px;
+}
+     
+
+
+    
+
+
+    .cardimages img {
+      border: 2px solid black;
+      border-radius: 20px;
+      box-shadow: #ffffff;
+      background-color: #222;
+      width: 400px;
+      border: 2px solid transparent;
+      border-bottom: 3px solid rgb(254, 9, 80);
+      border-right: 3px solid rgb(254, 9, 80);
+      transition: 0.3s ease;
+       border: 2px solid black;
+
+    }
+
+
+    .contact-section{
+      display:flex;
+      justify-content:space-between;
+      padding:20px;
+      margin-top: 10%;
+      height:60vh;
+      background-color:rgb(35, 35, 35);
+      border-radius: 20px ;
+      gap:20px;
+      flex-wrap: wrap;
+      border: 2px solid rgb(35, 35, 35);
+    }
+
+    .left-sidecontact,.right-sidecontact{
+      flex:1;
+       padding: 50px;
+       
+      
+    }
+
+     input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    textarea {
+      width: 40%;
+      padding: 40px;
+      margin-bottom: 16px;
+      border: 1px solid #444;
+      border-radius: 6px;
+      background-color: #222;
+      color: #fff;
+      font-size: 16px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      box-sizing: border-box;
+    }
+
+
+
+
+
+
+    
+  
+ 
+    
+
+    
+    
+
+   
+
+    
+
+      
+  
+    
+      
+
+    
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <div class="profile">
+      <img src="https://inversweb.com/product/html/reeni/assets/images/banner/header-left-user.jpg" alt="profile">
+    </div>
+    <nav>
+      <ul>
+        <li class="active"><img src="home.png">Home</li>
+        <li><img src="briefcase.png">Features</li>
+        <li><img src="layers.png">Portfolio</li>
+        <li><img src="group.png">Resume</li>
+        <li><img src="user.png">Clients</li>
+        <li><img src="cart.png">Pricing</li>
+        <li><img src="blog.png">Blog</li>
+        <li><img src="phone (2).png">Contact</li>
+      </ul>
+    </nav>
+    <div class="socials">
+      <hr>
+      <p>Find With Me</p>
+      <ul class="media">
+        <li><img src="instagram.png" alt="Instagram"></li>
+        <li><img src="linkedin.png" alt="LinkedIn"></li>
+        <li><img src="twitter.png" alt="Twitter"></li>
+        <li><img src="facebook.png" alt="Facebook"></li>
+      </ul>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <h4>HELLO</h4>
+    <h1>I'm Ang lakpa Sherpa</h1>
+    <h2>A <span>UI/UX designer</span></h2>
+    <p>
+      A personal portfolio is a collection of your work, achievements, and skills that highlights your abilities and
+      professional growth. It serves as
+    </p>
+    <button class="buttom">View Portfolio &rarr;</button>
+    <div class="container">
+      <div class="card">
+        <h2><span class="number">01.</span>Success Architects</h2>
+        <p>Business consulting consultants provide expert advice and guide the businesses to help theme their
+          performance efficiency.</p>
+      </div>
+      <div class="card">
+        <h2><span class="number">04.</span>UI/Visual Design</h2>
+        <p>I’m proud of what I’ve accomplished and excited to share my journey with you. I’m proud of what I’ve
+          accomplished and excited to.</p>
+
+      </div>
+      <div class="card">
+        <h2><span class="number">02.</span>UI/Visual Design</h2>
+        <p>I’m proud of what I’ve accomplished and excited to share my journey with you. I’m proud of what I’ve
+          accomplished and excited to.</p>
+
+      </div>
+      <div class="card">
+        <h2><span class="number">05.</span>UI/Visual Design</h2>
+        <p>I’m proud of what I’ve accomplished and excited to share my journey with you. I’m proud of what I’ve
+          accomplished and excited to.</p>
+
+      </div>
+      <div class="card">
+        <h2><span class="number">03.</span>UI/Visual Design</h2>
+        <p>I’m proud of what I’ve accomplished and excited to share my journey with you. I’m proud of what I’ve
+          accomplished and excited to.</p>
+
+      </div>
+      <div class="card">
+        <h2><span class="number">06.</span>UI/Visual Design</h2>
+        <p>I’m proud of what I’ve accomplished and excited to share my journey with you. I’m proud of what I’ve
+          accomplished and excited to.</p>
+
+      </div>
+    </div>
+
+    <div class="Para">
+      <div class="label"><span>LATEST PORTFOLIO</span></div>
+      <h4>Transforming Ideas into
+        Exceptional</h4>
+      <p>Business consulting consultants provide expert advice <br>and guida
+        businesses to help them improve their<br> performance, efficiency, and
+        organizational</p>
+
+      <div class="container2">
+        <div class="cardimage">
+          <img src="https://inversweb.com/product/html/reeni/assets/images/latest-portfolio/portfoli-img-1.jpg">
+          <div class="bottom-text">
+            <h3>Digital Transformation Advisors</h3>
+            <br>
+            <p>Development Coaches</p>
+          </div>
+        </div>
+        <div class="cardimage">
+          <img src="https://inversweb.com/product/html/reeni/assets/images/latest-portfolio/portfoli-img-2.jpg">
+          <div class="bottom-text">
+            <h3>Digital Transformation Advisors</h3><br>
+            <p>Development Coaches</p>
+          </div>
+        </div>
+        <div class="cardimage">
+          <img src="https://inversweb.com/product/html/reeni/assets/images/latest-portfolio/portfoli-img-1.jpg">
+          <div class="bottom-text">
+            <h3>Digital Transformation Advisors</h3>
+            <br>
+            <p>Development Coaches</p>
+          </div>
+        </div>
+        <div class="cardimage">
+          <img src="https://inversweb.com/product/html/reeni/assets/images/latest-portfolio/portfoli-img-1.jpg">
+          <div class="bottom-text">
+            <h3>Digital Transformation Advisors</h3>
+            <br>
+            <p>Development Coaches</p>
+          </div>
+        </div>
+           </div>
+      
+      <div class="edu"><span>EDUCATION & EXPERIENCE</span><br>
+        <h4>Empowering Creativity<br>
+          through</h4>
+        <p>Business consulting consultants provide expert advice and guide
+          businesses to help them improve their performance, efficiency, and
+          organizational</p></div>
+        <h4 style="padding-left:0px">Education</h4>
+        <div class="container">
+
+          <div class="card">
+            <h2><span class="number"></span> Secondary Education Examination (SEE)</h2>
+            <p>East-Pole Higher Secondary School, Nepal (2018)
+              Affiliated to National Examination Board (NEB)</p>
+          </div>
+          <div class="card">
+            <h2><span class="number"></span>Higher Secondary Education</h2>
+            <p>Trinity International College, Nepal
+              Affiliated to National Examination Board (NEB)</p>
+          </div>
+          <div class="card">
+            <h2><span class="number"></span>Bachelor’s Degree (Ongoing)</h2>
+            <p>Thames International College, Nepal
+              Affiliated to Tribhuvan University (TU)<br>
+              Bachelor of Infromation Management(BIM)</p>
+          </div>
+        </div>
+      </div>
+      <div class="experience">
+        <div class="left-side">
+          <h4>Experience</h4>
+
+          <span>experience</span>
+          <h4>Soft Tech (2 Years)</h4>
+          <h5>UI/UX Designer</h5><p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cilium desi dolore eu fugiat nulla pariatu Duis aute irure.</p>
+          <br><br>
+          <br><span>experience</span>
+          <h4>ModernTech (3 Years)</h4>
+          <h5>App Developer</h5>
+          <p>
+          In this portfolio, you'll find a curated selection of projects
+          that highlight my skills in [Main Areas, e.g.. responsive web
+          design.</p>
+        </div>
+
+        <div class="right-side">
+          <img src="https://inversweb.com/product/html/reeni/assets/images/experiences/expert-img.jpg" alt="ang" />
+        </div>
+
+        
+
+
+
+      </div>
+
+      <div class="MyPrice">
+        <span>MY PRICE PLAN</span>
+        <h4>
+Enhancing Collaboration<br>
+between Remote</h4>
+<div class="container3">
+<div class="pricecards">
+ <p style="color: white;"> Starter
+<h4>$ 5.00</h4>
+
+Per Month
+
+<hr style="margin-top: 10px; margin-bottom: 10px">
+<ul>
+
+<li>5 Social Media Account</li>
+<li>Free Platform Access</li>
+<li>24/7 Customer Support</li> 
+</ul></p>
+<button class="pricebuttoms">Get Started</button>
+ 
+
+</div>
+<div class="midpricecards">
+ <p style="color: white;"> Basic
+<h4>$ 230.00</h4>
+
+Per Month
+
+<hr style="margin-top: 10px; margin-bottom: 10px">
+<ul>
+
+<li>5 Social Media Account</li>
+<li>Free Platform Access</li>
+<li>24/7 Customer Support</li> 
+<li>Marketing Platform</li>
+
+<li>Life time support</li>
+</ul></p>
+<br><br><br><br>
+<button class="pricebuttoms">Get Started</button>
+ 
+</div>
+<div class="pricecards">
+ <p style="color: white;"> Starter
+<h4>$ 45.00</h4>
+
+Per Month
+
+<hr style="margin-top: 10px; margin-bottom: 10px">
+<ul>
+
+<li>5 Social Media Account</li>
+<li>Free Platform Access</li>
+<li>24/7 Customer Support</li> 
+
+</ul></p>
+<button class="pricebuttoms">Get Started</button>
+ 
+</div>
+</div>
+
+ <div class="blogs">
+  <span>MY PRICE PLAN</span>
+        <h4>
+Enhancing Collaboration<br>
+between Remote</h4></div>
+<div class="container5">
+  <div class="cardimages">
+          <img src="https://inversweb.com/product/html/reeni/assets/images/blog/blog-img-4.jpg">
+            <h3>Let's bring your ideas to life!
+Contact me, and let's
+</h3><br>
+<p>READ MORE ></p>
+            
+          </div>
+          <div class="cardimages">
+          <img src="https://inversweb.com/product/html/reeni/assets/images/blog/blog-img-5.jpg">
+         
+            <h3>Inspiring the World, One Project
+at a Time for the man</h3><br>
+            <p>READ MORE ></p>
+          </div>
+          <div class="cardimages">
+          <img src="https://inversweb.com/product/html/reeni/assets/images/blog/blog-img-6.jpg">
+          
+            <h3>Each one showcases my
+approach and dedication man</h3><br>
+            <p>READ MORE ></p>
+          </div>
+
+</div>
+ </div>
+ <div class="contact-section">
+ <div class="left-sidecontact">
+  <span>GET IN TOUCH</span>
+<h4>Elevate your
+brand with Me</h4>
+<p>
+ished fact that a reader will be distrol acted
+bioiiy desig ished fact that a reader will acted
+ished fact that a reader will be distrol acted</p>
+
+ </div>
+ <div class="right-sidecontact">
+  <form>
+ <input type="text" placeholder="Your Name ">
+ <input type="number" placeholder="Phone Number "><br>
+ <input type="email" placeholder="Your Email">
+ <input type="text" placeholder="Subject"><br>
+ <textarea  name="message" placeholder="Your Message" rows="5" cols="30"></textarea>
+</form>
+ 
+ 
+ </div>
+ </div>
+  </main>
+
+
+
+</body>
+
+</html>
